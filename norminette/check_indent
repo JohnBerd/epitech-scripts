@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cp $1 monzizifaitlhelicoptere.c
+vim -en "+normal 7gg=GZZ" monzizifaitlhelicoptere.c
+
+x=`diff monzizifaitlhelicoptere.c $1 | head -n1 | cut -d c -f1`
+
+if [ -n "$x" ]
+then
+    echo "$1: lines $x"
+fi
+
+rm monzizifaitlhelicoptere.c

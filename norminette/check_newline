@@ -1,0 +1,8 @@
+#!/bin/bash
+
+x=`tail -n 1 "$1"`
+
+if [ "$x" == "" ]
+then
+    echo "$1"
+fi

@@ -1,0 +1,43 @@
+#!/bin/bash
+
+x=`head -n 1 "$1"`
+
+if [ "$x" != "/*" ]
+then
+    echo "$1"
+fi
+
+x=`sed -n 2p "$1"`
+
+if [ "$x" != "** EPITECH PROJECT, 2018" ]
+then
+    echo "$1"
+fi
+
+x=`sed -n 3p "$1"`
+
+if [[ "$x" =~ ** ]]
+then
+    echo "$1"
+fi
+
+x=`sed -n 4p "$1"`
+
+if [ "$x" != "** File description:" ]
+then
+    echo "$1"
+fi
+
+x=`sed -n 5p "$1"`
+
+if [[ "$x" =~ "** [^A-Za-z0-9\ ]" ]]
+then
+    echo "$1"
+fi
+
+x=`sed -n 6p "$1"`
+
+if [ "$x" != "*/" ]
+then
+    echo "$1"
+fi
