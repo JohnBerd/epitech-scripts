@@ -1,0 +1,8 @@
+#!/bin/bash
+
+x=`grep ^{ $1 | wc -l`
+
+if [ "$x" == "" ]
+then
+    echo "$1"
+fi

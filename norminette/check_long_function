@@ -1,0 +1,8 @@
+#!/bin/bash
+
+x=`awk '/^{/{count = NR} /^}/{if(NR - count - 1 > 20) print NR - count -1; count = 0}' $1`
+
+if [ "$x" != "" ]
+then
+    echo "$1"
+fi

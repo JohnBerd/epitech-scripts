@@ -1,5 +1,14 @@
 #!/bin/bash
 
+trap ctrl_c INT
+ctrl_c() {
+    rm -f tmp
+    rm -f norminette_tmp
+    rm -f monzizifaitlhelicoptere.c
+    echo -e "\e[33mC'est pas des manières de quitter un programme de qualitay petit batard!"
+    exit
+}
+
 header() {
     echo -e "\e[36m _______                       .__               __    __    "
     echo -e " \      \   ___________  _____ |__| ____   _____/  |__/  |_  ____  "
@@ -57,8 +66,12 @@ correction() {
 
 
 menu() {
-    number=2
-    echo -e "[1] All"
+    number=1
+    if [ "`cat norminette_tmp | grep -E '1|2|3|5' | wc -l`" != 1 ]
+    then
+        echo -e "[1] All"
+        let "number++"
+    fi
 
     if [ "`echo $norm_errors | grep 1`" != "" ]
     then
@@ -89,10 +102,11 @@ menu() {
 }
 
 response() {
-    number=2
-    if [ "$1" == 1 ]
+    number=1
+    if [ "`cat norminette_tmp | grep -E '1|2|3|5' | wc -l`" != 1 ]
     then
-        correction
+        echo -e "[1] All"
+        let "number++"
     fi
     if [ "`echo $norm_errors | grep 1`" != "" ]
     then
@@ -163,15 +177,28 @@ cat -e tmp2 | cut -d. -f2 | sed 's/^\//\.\//g' > tmp
 rm tmp2
 check "5"
 
+echo -e "\e[0mChecking for too long functions:\e[0m"
+find . -name "*.c" -type f -exec check_long_function {} \; > tmp
+check "6"
+
+echo -e "\e[0mChecking for too much functions in a same file:\e[0m"
+find . -name "*.c" -type f -exec check_much_function {} \; > tmp
+check "6"
+
 norm_errors=`cat norminette_tmp`
 if [ "$norm_errors" == "" ]
 then
     echo -e "\e[32mThe project is clear\e[0m"
 else
-    echo -e "\e[31mThe project has errors\e[0m\n"
-    menu
-    read -p "Error(s) to correct: " res
-    response "$res"
+    echo -e "\e[31mThe project has errors\e[0m"
+    if [ "`cat norminette_tmp | grep  -E '1|2|3|5'`" != "" ]
+    then
+        echo -e ""
+        menu
+        read -p "Error(s) to correct: " res
+        response "$res"
+    fi
 fi
-
-rm tmp norminette_tmp
+rm -f norminette_tmp
+rm -f tmp
+rm -f monzizifaitlhelicoptere.c
