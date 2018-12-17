@@ -105,7 +105,10 @@ response() {
     number=1
     if [ "`cat norminette_tmp | grep -E '1|2|3|5' | wc -l`" != 1 ]
     then
-        echo -e "[1] All"
+        correction "1"
+        correction "2"
+        correction "3"
+        correction "5"
         let "number++"
     fi
     if [ "`echo $norm_errors | grep 1`" != "" ]
