@@ -7,16 +7,16 @@ This norminette correct verify and correct automatically your C projects for Epi
 
 Be careful! If you already use vim, the last line will delete your config!
 
-`git clone git@github.com:JohnBerd/epitech-scripts.git
-cd epitech-scripts
-cp * /usr/local/bin
-cp -r norminette/\* /usr/local/bin
-chmod +x /usr/local/bin/*
-cp .vimrc ~`
+`git clone git@github.com:JohnBerd/epitech-scripts.git`
+`cd epitech-scripts`
+`cp * /usr/local/bin`
+`cp -r norminette/\* /usr/local/bin`
+`chmod +x /usr/local/bin/*`
+`cp .vimrc ~`
 
 ## Norminette:
 
-open the root file of your project to correct and type "norminette", select errors to correct.
+open the root file of your project to correct and type `norminette`, select errors to correct.
 
 ## Criterion Test
 
