@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ $# != 4 ]
+then
+    echo -e "clone_repo <student name> <student surname> <module> <name of the project>"
+    echo -e "example:"
+    echo -e "clone_repo john berd PSU minishell2"
+    exit
+fi
+
+git clone git@git.epitech.eu:/$1.$2@epitech.eu/$3_$4_2018
