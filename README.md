@@ -7,7 +7,7 @@ This norminette correct verify and correct automatically your C projects for Epi
 
 Be careful! If you already use vim, the last line will delete your config!
 
-`git clone git@github.com:JohnBerd/epitech-scripts.git`</br>
+`git clone https://github.com/JohnBerd/epitech-scripts.git`
 `cd epitech-scripts`</br>
 `sudo cp * /usr/local/bin`</br>
 `sudo cp -r norminette/* /usr/local/bin`</br>
