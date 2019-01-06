@@ -7,11 +7,11 @@ This norminette correct verify and correct automatically your C projects for Epi
 
 Be careful! If you already use vim, the last line will delete your config!
 
-`git clone git@github.com:JohnBerd/epitech-scripts.git`
-`cd epitech-scripts`
-`cp * /usr/local/bin`
-`cp -r norminette/\* /usr/local/bin`
-`chmod +x /usr/local/bin/*`
+`git clone git@github.com:JohnBerd/epitech-scripts.git`</br>
+`cd epitech-scripts`</br>
+`cp * /usr/local/bin`</br>
+`cp -r norminette/\* /usr/local/bin`</br>
+`chmod +x /usr/local/bin/*`</br>
 `cp .vimrc ~`
 
 ## Norminette:
@@ -20,7 +20,7 @@ open the root file of your project to correct and type `norminette`, select erro
 
 ## Criterion Test
 
-after you have created tour test File within your tests, use the command `tst <your_file_function>` or `tst *` to test all your files functions
+after you have created tour test File within your tests, use the command `tst <your_file_function>` or `tst *` to test all your files functions.
 
 ## Get prototypes
 
