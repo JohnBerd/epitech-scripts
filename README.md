@@ -9,9 +9,9 @@ Be careful! If you already use vim, the last line will delete your config!
 
 `git clone git@github.com:JohnBerd/epitech-scripts.git`</br>
 `cd epitech-scripts`</br>
-`cp * /usr/local/bin`</br>
-`cp -r norminette/* /usr/local/bin`</br>
-`chmod +x /usr/local/bin/*`</br>
+`sudo cp * /usr/local/bin`</br>
+`sudo cp -r norminette/* /usr/local/bin`</br>
+`sudo chmod +x /usr/local/bin/*`</br>
 `cp .vimrc ~`
 
 ### Norminette:

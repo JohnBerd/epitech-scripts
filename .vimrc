@@ -1,6 +1,4 @@
 syntax enable
-set background=dark
-colorscheme gruvbox
 set mouse=a
 set nu
 set expandtab
@@ -16,8 +14,6 @@ match OverLength /\%81v.\+/
 filetype on
 filetype plugin on
 filetype indent on
-
-execute pathogen#infect()
 
 autocmd bufnewfile *.c so ~/.vim/epitech_header
 autocmd bufnewfile *.h so ~/.vim/epitech_header
