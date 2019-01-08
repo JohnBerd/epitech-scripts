@@ -23,7 +23,7 @@ then
     echo "#include <iostream>" >> $1.hpp
     echo "#include <string>" >> $1.hpp
     echo "" >> $1.hpp
-    echo "Class $1" >> $1.hpp
+    echo "class $1" >> $1.hpp
     echo "{" >> $1.hpp
     echo "private:" >> $1.hpp
     echo "" >> $1.hpp
