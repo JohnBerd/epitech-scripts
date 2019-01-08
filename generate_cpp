@@ -1,0 +1,68 @@
+#!/bin/bash
+
+if [ "$#" != 1 ]
+then
+    echo -e "$0 <name of the class to generate>"
+    exit
+fi
+
+
+if [ ! -f $1.hpp ]
+then
+    touch $1.hpp
+    echo "/*" >> $1.hpp
+    echo "** EPITECH PROJECT, 2018" >> $1.hpp
+    echo "** \$NAME_OF_THE_PROJECT" >> $1.hpp
+    echo "** File description:" >> $1.hpp
+    echo "** Here is coded a super function" >> $1.hpp
+    echo "*/" >> $1.hpp
+    echo "" >> $1.hpp
+    echo "#ifndef `echo "$1" | tr '[:lower:]' '[:upper:]'`_H_" >> $1.hpp
+    echo "#define `echo "$1" | tr '[:lower:]' '[:upper:]'`_H_" >> $1.hpp
+    echo "" >> $1.hpp
+    echo "#include <iostream>" >> $1.hpp
+    echo "#include <string>" >> $1.hpp
+    echo "" >> $1.hpp
+    echo "Class $1" >> $1.hpp
+    echo "{" >> $1.hpp
+    echo "private:" >> $1.hpp
+    echo "" >> $1.hpp
+    echo "public:" >> $1.hpp
+    echo "$1();" >> $1.hpp
+    echo "~$1();" >> $1.hpp
+    echo "};" >> $1.hpp
+    echo "" >> $1.hpp
+    echo "#endif" >> $1.hpp
+    echo -e "$1.hpp well created!"
+else
+    echo -e "$1.hpp already exists!"
+    echo -e "`cat $1.cpp 2> /dev/null | grep "^[a-z]" | sed -e 's/)/);/g' | sed -e "s/$1:://g"`" >> $1.hpp
+fi
+find . -name "$1.hpp" -type f -exec vim -en "+normal 7gg=GZZ" {} \;
+
+if [ ! -f $1.cpp ]
+then
+    touch $1.cpp
+    echo "/*" >> $1.cpp
+    echo "** EPITECH PROJECT, 2018" >> $1.cpp
+    echo "** \$NAME_OF_THE_PROJECT" >> $1.cpp
+    echo "** File description:" >> $1.cpp
+    echo "** Here is coded a super function" >> $1.cpp
+    echo "*/" >> $1.cpp
+    echo "" >> $1.cpp
+    echo "#include \"$1.hpp\"" >> $1.cpp
+    echo "" >> $1.cpp
+    echo "$1::$1()" >> $1.cpp
+    echo "{" >> $1.cpp
+    echo " " >> $1.cpp
+    echo "}" >> $1.cpp
+    echo " " >> $1.cpp
+    echo "$1::~$1()" >> $1.cpp
+    echo "{" >> $1.cpp
+    echo " " >> $1.cpp
+    echo "}" >> $1.cpp
+    find . -name "$1.cpp" -type f -exec vim -en "+normal 7gg=GZZ" {} \;
+    echo -e "$1.cpp well created!"
+else
+    echo -e "$1.cpp already exists!"
+fi
