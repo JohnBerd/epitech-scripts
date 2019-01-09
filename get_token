@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+
+import hashlib
+import getpass
+
+print(bytes(hashlib.sha512(bytes(getpass.getpass(), 'utf8')).hexdigest(), 'utf8'))
