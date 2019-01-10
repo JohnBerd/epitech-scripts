@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ ! -f ~/.ssh/id_rsa.pub ]
+then
+sshkeygen
+comment=`cat ~/.ssh/id_rsa.pub | cut -d ' ' -f3`
+blih ssh delete $comment
+blih ssh upload ~/.ssh/id_rsa.pub
+else
+    echo "error: ssh-key already exists!"
+fi

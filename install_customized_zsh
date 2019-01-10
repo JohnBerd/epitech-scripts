@@ -3,6 +3,7 @@
 dnf install zsh
 dnf install powerline-fonts
 dnf install terminator
+dnf install util-linux-user
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 chsh -s /bin/zsh
 sed -i 's/robbyrussell/agnoster/g' ~/.zshrc
