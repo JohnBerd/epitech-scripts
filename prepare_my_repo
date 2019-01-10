@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ "$#" != 2 ] || [ -z "$1" ]
+then
+    echo "Exemple:"
+    echo "prepare_my_repo CPU my_ls"
+	exit 0
+fi
+
+token=
+login=
+year=2018
+
+blih -u $login -t $token repository create $1_$2_$year
+blih -u $login -t $token repository setacl $1_$2_$year ramassage-tek r
+blih -u $login -t $token repository getacl $1_$2_$year
+git clone git@git.epitech.eu:$login/$1_$2_$year
+# cp -r ~/my_scripts/res/* $1_$2_$year
+cd $1_$2_$year
