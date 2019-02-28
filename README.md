@@ -12,8 +12,8 @@ Be careful! If you already use vim, the last line will delete your config!
 `sudo cp * /usr/local/bin`</br>
 `sudo cp -r norminette/* /usr/local/bin`</br>
 `sudo chmod +x /usr/local/bin/*`</br>
-`cp .vimrc ~`
-`echo "alias ls='lsl'" >> .zshrc`
+`cp .vimrc ~`</br>
+`echo "alias ls='lsl'" >> ~/.zshrc`
 
 ### Norminette:
 
