@@ -63,7 +63,7 @@ correction() {
     then
         echo -e "\e[36mCorrecting the indentation in all the project\e[0m"
         find . -name "*.c" -type f -exec vim -en "+normal 7gg=GZZ" {} \;
-        find . -name "*.c" -type f -exec vim -en "+normal 7gg=GZZ" {} \;
+        find . -name "*.h" -type f -exec vim -en "+normal 7gg=GZZ" {} \;
     fi
 }
 
