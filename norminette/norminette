@@ -36,10 +36,10 @@ correction() {
     if [ "$1" == "1" ] || [ "$1" == "" ]
     then
         echo -e "\e[36mCorrecting trailing spaces in all the project\e[0m"
-        until [ "`grep -r ' $' *.h *.c 2> /dev/null`" = "" ]
+        until [ "`grep -r ' $' --include="*.[ch]" 2> /dev/null`" = "" ]
         do
-            find . -name "*.c" -type f -exec sed -i -e 's/ $//g' {} \;
-            find . -name "*.h" -type f -exec sed -i -e 's/ $//g' {} \;
+            find . -name "*.c" -type f -exec sed -i -e 's/ $/$/g' {} \;
+            find . -name "*.h" -type f -exec sed -i -e 's/ $/$/g' {} \;
         done
     fi
 
@@ -106,12 +106,19 @@ menu() {
 
 response() {
     number=1
+    if [ $1 -eq 1 ]
+    then
+        for var in 1 2 3 5
+        do
+            if [ "`cat norminette_tmp | grep $var`" ]
+            then
+                correction "$var"
+            fi
+        done
+        return
+    fi
     if [ "`cat norminette_tmp | grep -E '1|2|3|5' | wc -l`" != 1 ]
     then
-        correction "1"
-        correction "2"
-        correction "3"
-        correction "5"
         let "number++"
     fi
     if [ "`echo $norm_errors | grep 1`" != "" ]
@@ -164,10 +171,10 @@ find . -name "*.h" -type f -exec check_newline {} \; >> tmp
 check "2"
 
 echo -e "\e[0mChecking for misplaced spaces:\e[0m"
-grep -rn " return(" | grep -v .git > tmp
-grep -rn " while(" | grep -v .git >> tmp
-grep -rn " for(" | grep -v .git >> tmp
-grep -rn " if(" | grep -v .git >> tmp
+grep -rn " return(" --include="*.[ch]" | grep -v .git > tmp
+grep -rn " while(" --include="*.[ch]" | grep -v .git >> tmp
+grep -rn " for(" --include="*.[ch]" | grep -v .git >> tmp
+grep -rn " if(" --include="*.[ch]" | grep -v .git >> tmp
 check "3"
 
 echo -e "\e[0mChecking for headers:\e[0m"
